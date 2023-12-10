@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="basicstruts2" extends="struts-default" strict-method-invocation="false">
+        <action name="">
+            <result>/WEB-INF/login.jsp</result>
+        </action>
+        <!-- loginUser -->
+		<action name="loginUser" class="Action.LoginAction" method="login">
+			<result name="loginfail">/WEB-INF/login.jsp</result>
+			<result name="admin" type="redirect">homeAdminAction</result>
+			<result name="khach" type="redirect">homeKhachAction</result>
+		</action>
+		<!-- homeAdminAction -->
+		<action name="homeAdminAction" class="Action.AdminAction" method="home">
+			<result name="success">/WEB-INF/admin/home.jsp</result>
+		</action>
+		<!-- homeKhachAction -->
+		<action name="homeKhachAction" class="Action.KhachAction" method="home">
+			<result name="success">/WEB-INF/khach/home.jsp</result>
+		</action>
+    </package>
+</struts>
