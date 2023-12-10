@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Wellcome Khach</h1>
+<h1>Wellcome Trang khach</h1>
 </body>
 </html>
