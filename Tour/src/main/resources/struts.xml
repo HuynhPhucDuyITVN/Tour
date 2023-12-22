@@ -6,6 +6,9 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <package name="basicstruts2" extends="struts-default" strict-method-invocation="false">
+        <action name="">
+            <result>/WEB-INF/login.jsp</result>
+        </action>
         <action name="home">
             <result>/WEB-INF/login.jsp</result>
         </action>
@@ -15,8 +18,6 @@
 			<result name="admin" type="redirect">homeAdminAction</result>
 			<result name="khach" type="redirect">homeKhachAction</result>
 		</action>
-		
-		
 		<!-- register -->
 		<action name="registerAction" class="Action.RegisterAction" method="home">
 			<result name="success">/WEB-INF/register.jsp</result>
