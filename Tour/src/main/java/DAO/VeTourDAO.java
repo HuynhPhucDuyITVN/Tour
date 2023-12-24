@@ -39,6 +39,35 @@ public class VeTourDAO {
 			 return list; 
 		
 	}
+	public List<VeTour> getList(){
+		List<VeTour> list = new ArrayList<VeTour>();
+		 DBService db=new DBService(); 
+		 PreparedStatement statement;
+		 
+		 try { 
+			 statement = db.getConn().prepareStatement("SELECT * FROM `vetour`");
+			 ResultSet rs=db.executeQuery(statement); 
+			 
+			 if(rs!=null) 
+			 { 
+			 while(rs.next()) 
+			 { 
+			 list.add( new VeTour(rs.getInt("id"), 
+					 rs.getString("tentour"), 
+					 rs.getString("mota"), 
+					 rs.getString("thoigian"), 
+					 rs.getString("hinhanh"), 
+					 rs.getInt("gia"), 
+					 rs.getInt("idloaitour"))); 
+			 } 
+			 } 
+			 } catch (SQLException e) { 
+			 // TODO Auto-generated catch block 
+			 e.printStackTrace(); 
+			 } 
+			 return list; 
+		
+	}
 	public VeTour getVeTourByID(int id){
 
 		 VeTour vetour = null;
@@ -70,18 +99,19 @@ public class VeTourDAO {
 			 return vetour; 
 	}
 	
-	public void Order(int idnguoidung,int idvetour, int soluong, int gia, int 
+	public void Order(int idnguoidung,int idvetour,String sdt, int soluong, int gia, int 
 			 thanhtien) 
 			  { 
 			  DBService db=new DBService(); 
 			  PreparedStatement statement; 
 			  try { 
-			  statement = db.getConn().prepareStatement("INSERT INTO `datve`(`idnguoidung`,`idvetour`,`soluong`,`gia`,`thanhtien`) values(?,?,?,?,?)"); 
+			  statement = db.getConn().prepareStatement("INSERT INTO `datve`(`idnguoidung`,`idvetour`,`sdt`,`soluong`,`gia`,`thanhtien`) values(?,?,?,?,?,?)"); 
 			  statement.setInt(1, idnguoidung); 
-			  statement.setInt(2, idvetour); 
-			  statement.setInt(3, soluong); 
-			  statement.setInt(4, gia); 
-			  statement.setInt(5, thanhtien); 
+			  statement.setInt(2, idvetour);
+			  statement.setString(3, sdt);
+			  statement.setInt(4, soluong); 
+			  statement.setInt(5, gia); 
+			  statement.setInt(6, thanhtien); 
 			  
 			  db.executeUpdate(statement); 
 			  } catch (SQLException e) { 

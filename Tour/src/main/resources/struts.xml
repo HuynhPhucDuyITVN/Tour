@@ -35,5 +35,20 @@
 		<action name="homeKhachAction" class="Action.KhachAction" method="home">
 			<result name="success">/WEB-INF/khach/home.jsp</result>
 		</action>
+		<action name="menuKhachAction" class="Action.KhachAction" method="menu">
+			<result name="success">/WEB-INF/khach/menu.jsp</result>
+		</action>
+		<action name="menutheoloaiKhachAction" class="Action.KhachAction" method="menutheoloai">
+			<result name="success">/WEB-INF/khach/menutheoloai.jsp</result>
+		</action>
+		<action name="DetailKhachAction" class="Action.KhachAction" method="Detail">
+			<result name="success">/WEB-INF/khach/detail.jsp</result>
+		</action>
+		<action name="OrderKhachAction" class="Action.KhachAction" method="Order">
+			<result name="success">/WEB-INF/khach/order.jsp</result>
+		</action>
+		<action name="submitOrderKhacAction" class="Action.KhachAction" method="submitOrder">
+			<result name="success" type="redirect">homeKhachAction</result>
+		</action>
     </package>
 </struts>

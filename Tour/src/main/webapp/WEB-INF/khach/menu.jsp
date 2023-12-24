@@ -1,12 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +17,21 @@
 	</s:if>
 	<table>
 		<tr>
-			<th>Tên món ăn</th>
+			<th>Tên tour</th>
+			<th>Mô tả</th>
+			<th>Thời gian</th>
 			<th>Hình ảnh</th>
+			<th>Giá</th>
 			<th></th>
 		</tr>
-		<s:iterator var="loaitour" value="loaitourlist">
+		<s:iterator var="vetour" value="vetourlist">
 		<tr>
-			<td><s:property value="tenloaitour"/></td>
+			<td><s:property value="tentour"/></td>
+			<td><s:property value="mota"/></td>
+			<td><s:property value="thoigian"/></td>
 			<td><img width='80' src=' ./img/<s:property value="hinhanh"/>'/></td>
-			<td><a href='menutheoloaiKhachAction?idloaitour=<s:property value="id"/>'>chitiet</a></td>
+			<td><s:property value="gia"/></td>
+			<td><a href='DetailKhachAction?idvetour=<s:property value="id"/>'>chitiet</a></td>
 		</tr>
 		</s:iterator>		
 	</table>
