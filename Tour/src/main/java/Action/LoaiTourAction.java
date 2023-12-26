@@ -18,6 +18,7 @@ public class LoaiTourAction extends ActionSupport{
 	File hinh;
 	String hinhFileName;
 	String hinhContentType;
+	private int trangthai;
 
 	private String tenloaitour;
 
@@ -80,9 +81,20 @@ public class LoaiTourAction extends ActionSupport{
 	public void setLoaitour(LoaiTour loaitour) {
 		this.loaitour = loaitour;
 	}
+	
+	
+	
+	public int getTrangthai() {
+		return trangthai;
+	}
+
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
+	}
+
 	public String list()
 	{
-		loaitourlist=new LoaiTourDAO().getList();
+		loaitourlist=new LoaiTourDAO().getListAdmin();
 		return SUCCESS;
 	}
 	public String create()
@@ -116,7 +128,7 @@ public class LoaiTourAction extends ActionSupport{
 	}
 	public String edit()
 	{
-		loaitour =new LoaiTourDAO().getLoaiTourByID(id);
+		loaitour =new LoaiTourDAO().getLoaiTourByIDAdmin(id);
 		return SUCCESS;
 	}
 	
@@ -141,11 +153,11 @@ public class LoaiTourAction extends ActionSupport{
 		 }
 		 else
 		 {
-			 loaitour=new LoaiTourDAO().getLoaiTourByID(id);
+			 loaitour=new LoaiTourDAO().getLoaiTourByIDAdmin(id);
 			 hinhFileName=loaitour.getHinhanh();
 		 }
 		 
-		new LoaiTourDAO().update(id, tenloaitour, hinhFileName);
+		new LoaiTourDAO().update(id, tenloaitour, hinhFileName,trangthai);
 		
 		
 		return "list";

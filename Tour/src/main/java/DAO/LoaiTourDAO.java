@@ -15,7 +15,7 @@ public class LoaiTourDAO {
 		 PreparedStatement statement;
 		 
 		 try { 
-			 statement = db.getConn().prepareStatement("SELECT * FROM `loaitour`"); 
+			 statement = db.getConn().prepareStatement("SELECT * FROM `loaitour` where `trangthai`=1"); 
 			 ResultSet rs=db.executeQuery(statement); 
 			 
 			 if(rs!=null) 
@@ -24,7 +24,8 @@ public class LoaiTourDAO {
 			 { 
 			 list.add( new LoaiTour(rs.getInt("id"), 
 					 rs.getString("tenloaitour"), 
-					 rs.getString("hinhanh"))); 
+					 rs.getString("hinhanh"),
+					 rs.getInt("trangthai"))); 
 			 } 
 			 } 
 			 } catch (SQLException e) { 
@@ -41,6 +42,59 @@ public class LoaiTourDAO {
 		 PreparedStatement statement;
 		 
 		 try { 
+			 statement = db.getConn().prepareStatement("SELECT * FROM `loaitour` WHERE `id`=? and `trangthai`=1"); 
+			 statement.setInt(1, id); 
+			 ResultSet rs=db.executeQuery(statement); 
+			 
+			 if(rs!=null) 
+			 { 
+			 while(rs.next()) 
+			 { 
+			 loaitour= new LoaiTour(rs.getInt("id"), 
+					 rs.getString("tenloaitour"), 
+					 rs.getString("hinhanh"),
+					 rs.getInt("trangthai")); 
+			 } 
+			 } 
+			 } catch (SQLException e) { 
+			 // TODO Auto-generated catch block 
+			 e.printStackTrace(); 
+			 } 
+			 return loaitour; 
+	}
+	public List<LoaiTour> getListAdmin(){
+		List<LoaiTour> list = new ArrayList<LoaiTour>();
+		 DBService db=new DBService(); 
+		 PreparedStatement statement;
+		 
+		 try { 
+			 statement = db.getConn().prepareStatement("SELECT * FROM `loaitour`"); 
+			 ResultSet rs=db.executeQuery(statement); 
+			 
+			 if(rs!=null) 
+			 { 
+			 while(rs.next()) 
+			 { 
+			 list.add( new LoaiTour(rs.getInt("id"), 
+					 rs.getString("tenloaitour"), 
+					 rs.getString("hinhanh"),
+					 rs.getInt("trangthai"))); 
+			 } 
+			 } 
+			 } catch (SQLException e) { 
+			 // TODO Auto-generated catch block 
+			 e.printStackTrace(); 
+			 } 
+			 return list; 
+	}
+	
+	public LoaiTour getLoaiTourByIDAdmin(int id){
+
+		 LoaiTour loaitour = null;
+		 DBService db=new DBService(); 
+		 PreparedStatement statement;
+		 
+		 try { 
 			 statement = db.getConn().prepareStatement("SELECT * FROM `loaitour` WHERE `id`=?"); 
 			 statement.setInt(1, id); 
 			 ResultSet rs=db.executeQuery(statement); 
@@ -51,7 +105,8 @@ public class LoaiTourDAO {
 			 { 
 			 loaitour= new LoaiTour(rs.getInt("id"), 
 					 rs.getString("tenloaitour"), 
-					 rs.getString("hinhanh")); 
+					 rs.getString("hinhanh"),
+					 rs.getInt("trangthai")); 
 			 } 
 			 } 
 			 } catch (SQLException e) { 
@@ -76,15 +131,16 @@ public class LoaiTourDAO {
 		}
 	}
 
-	public void update(int id, String tenloaitour, String hinh) {
+	public void update(int id, String tenloaitour, String hinh, int trangthai) {
 		// TODO Auto-generated method stub
 		DBService db=new DBService();
 		PreparedStatement statement;
 		try {
-			statement = db.getConn().prepareStatement("UPDATE `loaitour` SET `tenloaitour`=?, `hinhanh`=? where `id`=?");
+			statement = db.getConn().prepareStatement("UPDATE `loaitour` SET `tenloaitour`=?, `hinhanh`=?, `trangthai`=? where `id`=?");
 			statement.setString(1, tenloaitour);
 			statement.setString(2, hinh);
-			statement.setInt(3, id);	
+			statement.setInt(3, trangthai);
+			statement.setInt(4, id);
 			db.executeUpdate(statement);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
