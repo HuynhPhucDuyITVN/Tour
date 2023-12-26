@@ -31,6 +31,12 @@
 		<action name="homeAdminAction" class="Action.AdminAction" method="home">
 			<result name="success">/WEB-INF/admin/home.jsp</result>
 		</action>
+		<!---->
+		<action name="*LoaiTourAction" class="Action.LoaiTourAction" method="{1}">             
+            <result name="success">/WEB-INF/admin/loaitour/{1}.jsp</result>
+            <result name="list" type="redirect">listLoaiTourAction</result>
+		</action>
+		
 		<!-- homeKhachAction -->
 		<action name="homeKhachAction" class="Action.KhachAction" method="home">
 			<result name="success">/WEB-INF/khach/home.jsp</result>
