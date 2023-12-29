@@ -19,33 +19,35 @@
 </head>
 <body>
 	<h1>Danh sách món ăn</h1>
-	
 	 <s:if test="hasActionMessages()">
 	      <p>
-	          <s:actionmessage /> 
+	          <s:actionmessage/> 
 	      </p>
 	  </s:if>
-	<p><a href="createLoaiTourAction">Thêm mới</a>  <a href="homeAdminAction">Trang chủ</a></p>
+	<p><a href="createNguoiDungAction">Thêm mới</a>  <a href="homeAdminAction">Trang chủ</a></p>
 	<table >
 	<tr>
 	<th>Tên món ăn</th>
 	<th>Hình ảnh</th>
-	<th>Trạng thái</th>
+	<th>Hình ảnh</th>
 	<th></th>
 	</tr>
 
 	
-		<s:iterator var="loaitour" value="loaitourlist">
+		<s:iterator var="nguoidung" value="nguoidunglist">
 		<tr>
-			<td><s:property value="tenloaitour"/></td>
-			<td><img width='80' src=' ./img/<s:property value="hinhanh"/>'/></td>
+			<td><s:property value="tendangnhap"/></td>
+			<td><s:property value="loaiquyen"/></td>
 			<s:if test="trangthai==1">
 			<td>Còn hoạt động</td>
 			</s:if>
 			<s:if test="trangthai==0">
 			<td>Ngưng hoạt động</td>
 			</s:if>
-			<td><a href='editLoaiTourAction?id=<s:property value="id"/>'>Chỉnh sửa</a></td>
+			
+			
+			<td><a href='editNguoiDungAction?id=<s:property value="id"/>'>Chỉnh sửa</a>
+			<a href='changeNguoiDungAction?id=<s:property value="id"/>'>doimk</a></td>
 		</tr>
 		</s:iterator>
 	

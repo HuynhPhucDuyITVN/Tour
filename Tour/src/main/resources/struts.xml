@@ -14,7 +14,7 @@
         </action>
         <!-- loginUser -->
 		<action name="loginUser" class="Action.LoginAction" method="login">
-			<result name="loginfail">/WEB-INF/login.jsp</result>
+			<result name="login">/WEB-INF/login.jsp</result>
 			<result name="admin" type="redirect">homeAdminAction</result>
 			<result name="khach" type="redirect">homeKhachAction</result>
 		</action>
@@ -24,6 +24,7 @@
 		</action>
 		
 		<action name="RegisterUser" class="Action.RegisterAction" method="register">
+			<result name="home">/WEB-INF/register.jsp</result>
 			<result name="success">/WEB-INF/login.jsp</result>
 		</action>
 		
@@ -31,12 +32,22 @@
 		<action name="homeAdminAction" class="Action.AdminAction" method="home">
 			<result name="success">/WEB-INF/admin/home.jsp</result>
 		</action>
-		<!---->
+		<!--LoaiTour-->
 		<action name="*LoaiTourAction" class="Action.LoaiTourAction" method="{1}">             
             <result name="success">/WEB-INF/admin/loaitour/{1}.jsp</result>
             <result name="list" type="redirect">listLoaiTourAction</result>
 		</action>
-		
+		<!-- VeTour -->
+		<action name="*VeTourAction" class="Action.VeTourAction" method="{1}">             
+            <result name="success">/WEB-INF/admin/vetour/{1}.jsp</result>
+            <result name="list" type="redirect">listVeTourAction</result>
+		</action>
+		<!-- NguoiDung -->
+		<action name="*NguoiDungAction" class="Action.NguoiDungAction" method="{1}">             
+            <result name="success">/WEB-INF/admin/nguoidung/{1}.jsp</result>
+            <result name="list" type="redirect">listNguoiDungAction</result>
+            <result name="login" >/WEB-INF/login.jsp</result>
+		</action>
 		<!-- homeKhachAction -->
 		<action name="homeKhachAction" class="Action.KhachAction" method="home">
 			<result name="success">/WEB-INF/khach/home.jsp</result>

@@ -44,8 +44,16 @@ public class RegisterAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String register() {
-		new UserDAO().register(tendangnhap, matkhau);
-		return "success";
+		NguoiDung nd = new UserDAO().checkregister(tendangnhap);
+		if (nd == null) {
+			addActionMessage("Đăng ký thành công");
+			new UserDAO().register(tendangnhap, matkhau);
+			return "success";
+		} else {
+			addActionMessage("Tài khoản đã tồn tại vui lòng đổi tên đăng nhập");
+			return "home";
+		}
+		
 	}
 
 }

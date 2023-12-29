@@ -15,7 +15,16 @@
 		<input type="hidden" name="id" value='<s:property value="loaitour.id"/>'/>	
 		
 		<s:textfield label="Tên loại tour" id="tenloaitour" name="tenloaitour" value="%{loaitour.tenloaitour}"  />
-		<s:textfield label="Trạng thái" id="tenloaitour" name="trangthai" value="%{loaitour.trangthai}"  />
+		<select name="trangthai" id="trangthai">
+			<s:if test="loaitour.trangthai==1">
+			<option value="1" selected="selected">Còn hoạt động</option>
+			<option value="0">Ngưng hoạt động</option>
+			</s:if>
+			<s:if test="loaitour.trangthai==0">
+			<option value="0" selected="selected">Ngưng hoạt động</option>
+			<option value="1">Còn hoạt động</option>
+			</s:if>
+		</select>
 		Hình: <img width='80' src='./img/<s:property value="loaitour.hinhanh"/>'/><br/>		
 		<s:file name="hinh" label="Chọn hình" accept="image/png, image/jpeg, image/gif"></s:file>
 		<s:submit/>

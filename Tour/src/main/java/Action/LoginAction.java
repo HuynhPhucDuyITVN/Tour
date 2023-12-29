@@ -33,6 +33,10 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.matkhau = matkhau;
 	}
 
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 	public String login() {
 		NguoiDung nd = new UserDAO().login(tendangnhap, matkhau);
 		if (nd != null) {
@@ -48,10 +52,5 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			return "login";
 		}
 	}
-
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
 
 }

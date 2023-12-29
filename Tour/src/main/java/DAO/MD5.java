@@ -4,6 +4,8 @@ package DAO;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import org.apache.commons.codec.digest.DigestUtils;
 public class MD5 {
 public static String getMd5(String input)
  {
@@ -33,6 +35,7 @@ public static String getMd5(String input)
  throw new RuntimeException(e);
  }
  }
+
 
 } 
 

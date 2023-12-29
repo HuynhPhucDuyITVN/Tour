@@ -7,7 +7,9 @@ public class VeTour {
 	String thoigian;
 	String hinhanh;
 	int gia;
+	int trangthai;
 	int idloaitour;
+	String tenloaitour;
 	
 	public VeTour(int id, String tentour, String mota, String thoigian, String hinhanh, int gia, int idloaitour) {
 		super();
@@ -19,6 +21,37 @@ public class VeTour {
 		this.gia = gia;
 		this.idloaitour = idloaitour;
 	}
+	
+	
+	public VeTour(int id, String tentour, String mota, String thoigian, String hinhanh, int gia, int trangthai,
+			int idloaitour, String tenloaitour) {
+		super();
+		this.id = id;
+		this.tentour = tentour;
+		this.mota = mota;
+		this.thoigian = thoigian;
+		this.hinhanh = hinhanh;
+		this.gia = gia;
+		this.trangthai = trangthai;
+		this.idloaitour = idloaitour;
+		this.tenloaitour = tenloaitour;
+	}
+	
+
+	public VeTour(int id, String tentour, String mota, String thoigian, String hinhanh, int gia, int trangthai,
+			int idloaitour) {
+		super();
+		this.id = id;
+		this.tentour = tentour;
+		this.mota = mota;
+		this.thoigian = thoigian;
+		this.hinhanh = hinhanh;
+		this.gia = gia;
+		this.trangthai = trangthai;
+		this.idloaitour = idloaitour;
+	}
+
+
 	public int getId() {
 		return id;
 	}
@@ -60,6 +93,18 @@ public class VeTour {
 	}
 	public void setIdloaitour(int idloaitour) {
 		this.idloaitour = idloaitour;
+	}
+	public String getTenloaitour() {
+		return tenloaitour;
+	}
+	public void setTenloaitour(String tenloaitour) {
+		this.tenloaitour = tenloaitour;
+	}
+	public int getTrangthai() {
+		return trangthai;
+	}
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
 	}
 	
 }

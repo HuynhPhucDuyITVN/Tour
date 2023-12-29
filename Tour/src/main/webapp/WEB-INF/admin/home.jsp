@@ -9,8 +9,8 @@
 </head>
 <body>
 	<a href="listLoaiTourAction" >Quản lý loai ve</a>
-	<a href="" >Quản lý ve</a>
-	<a href="" >Quản lý nguoidung</a>
+	<a href="listVeTourAction" >Quản lý ve</a>
+	<a href="listNguoiDungAction" >Quản lý nguoidung</a>
 	<a href="" >Quản lý đặt món</a>
 </body>
 </html>

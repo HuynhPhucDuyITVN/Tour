@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,11 @@
 </head>
 <body>
 
+<s:if test="hasActionMessages()">
+				        <div class="alert alert-info">
+				            <s:actionmessage /> 
+				        </div>
+    					</s:if>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-1">
         <div class="row">
@@ -30,11 +36,6 @@
                             <input type="submit" value="Đăng nhập" class="btn btn-info btn btn-block" />
                         </div>
                     </form>
-                    <s:if test="hasActionMessages()">
-				        <div class="welcome">
-				            <s:actionmessage /> 
-				        </div>
-    				</s:if>
                     <div class="my-3">
                         <p class="text-center">Chưa có tài khoản <a href="registerAction" >Đăng ký</a></p>
                     </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<s:if test="hasActionMessages()">
+				        <div class="alert alert-danger">
+				            <s:actionmessage /> 
+				        </div>
+    					</s:if>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-1">
         <div class="row">
@@ -29,11 +35,7 @@
                             <input type="submit" value="Đăng ký" class="btn btn-info btn btn-block" />
                         </div>
                     </form>
-                    <s:if test="hasActionMessages()">
-				        <div class="welcome">
-				            <s:actionmessage /> 
-				        </div>
-    				</s:if>
+                    
                     <div class="my-3">
                         <p class="text-center">Đã có tài khoản <a href="home" >Đăng nhập</a></p>
                     </div>
