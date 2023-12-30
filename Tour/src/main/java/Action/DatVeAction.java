@@ -1,14 +1,27 @@
 package Action;
 
 import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import DAO.DatVeDAO;
-import DAO.LoaiTourDAO;
 import Model.DatVe;
 
-public class DatVeAction extends ActionSupport {
+public class DatVeAction extends ActionSupport implements SessionAware {
+
+	private Map<String, Object> session;
+	
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 	List<DatVe> datvelist;
 	DatVe datve;
 	private int id;

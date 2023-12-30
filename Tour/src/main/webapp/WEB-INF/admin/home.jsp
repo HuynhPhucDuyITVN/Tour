@@ -12,6 +12,7 @@
 	<a href="listVeTourAction" >Quản lý ve</a>
 	<a href="listNguoiDungAction" >Quản lý nguoidung</a>
 	<a href="listDatVeAction" >Quản lý đặt món</a>
+	<a href="logoutKhachAction" >Đăng xuất</a>
 </body>
 </html>
 

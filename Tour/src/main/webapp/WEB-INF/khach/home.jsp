@@ -15,6 +15,8 @@
 </head>
 <body>
 	<h1>Food list</h1>
+	<a href="logoutKhachAction">Đăng xuất</a>
+	<a href="vedatKhachAction">Vé đã đặt</a>
 	<a href="menuKhachAction">DSTONG</a>
 	<s:if test='getMessage()"!=""'>
 		<p>

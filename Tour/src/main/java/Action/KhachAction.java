@@ -7,17 +7,23 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+import DAO.DatVeDAO;
 import DAO.LoaiTourDAO;
 import DAO.VeTourDAO;
+import Model.DatVe;
 import Model.LoaiTour;
 import Model.NguoiDung;
 import Model.VeTour;
 
 public class KhachAction extends ActionSupport implements SessionAware {
 	List<LoaiTour> loaitourlist;
+	List<DatVe> datvelist;
+	DatVe datve;
 	private int idloaitour;
 	Map<String, Object> session;
 	private LoaiTour loaitour;
+	private int id;
+	private int trangthai;
 	
 	List<VeTour> vetourlist;
 	private int idvetour;
@@ -191,7 +197,11 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	public void setThanhtien(int thanhtien) {
 		this.thanhtien = thanhtien;
 	}
-
+	public String logout()
+	{
+		session.put("nguoidung", null);
+		return "login";
+	}
 
 
 	public String submitOrder() { 
@@ -199,6 +209,70 @@ public class KhachAction extends ActionSupport implements SessionAware {
 		new VeTourDAO().Order(nd.getId(), idvetour,sdt, soluong, gia, thanhtien);
 		return SUCCESS;
     }
+	
+	public List<DatVe> getDatvelist() {
+		return datvelist;
+	}
+
+	public void setDatvelist(List<DatVe> datvelist) {
+		this.datvelist = datvelist;
+	}
+
+
+
+	public DatVe getDatve() {
+		return datve;
+	}
+
+
+
+	public void setDatve(DatVe datve) {
+		this.datve = datve;
+	}
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	public int getTrangthai() {
+		return trangthai;
+	}
+
+
+
+	public void setTrangthai(int trangthai) {
+		this.trangthai = trangthai;
+	}
+
+
+
+	public String vedat()
+	{
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		datvelist=new DatVeDAO().getList(nd.getId());
+		return SUCCESS;
+	}
+	public String fixvedat()
+	{
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		datve =new DatVeDAO().getDatVeByID(id,nd.getId());
+		return SUCCESS;
+	}
+	public String update() {
+		new DatVeDAO().update(id, trangthai);
+		return "list";
+		
+	}
 
 	
 

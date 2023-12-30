@@ -3,16 +3,29 @@ package Action;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 
 import DAO.LoaiTourDAO;
 import Model.LoaiTour;
 
-public class LoaiTourAction extends ActionSupport{
+public class LoaiTourAction extends ActionSupport implements SessionAware {
+
+	private Map<String, Object> session;
+	
+	public Map<String, Object> getSession() {
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
 	private List<LoaiTour> loaitourlist;
 	
 	File hinh;
@@ -162,5 +175,6 @@ public class LoaiTourAction extends ActionSupport{
 		
 		return "list";
 	}
+	
 	
 }
