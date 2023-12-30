@@ -48,6 +48,11 @@
             <result name="list" type="redirect">listNguoiDungAction</result>
             <result name="login" >/WEB-INF/login.jsp</result>
 		</action>
+		<!-- DatVe -->
+		<action name="*DatVeAction" class="Action.DatVeAction" method="{1}">             
+            <result name="success">/WEB-INF/admin/datve/{1}.jsp</result>
+            <result name="list" type="redirect">listDatVeAction</result>
+		</action>
 		<!-- homeKhachAction -->
 		<action name="homeKhachAction" class="Action.KhachAction" method="home">
 			<result name="success">/WEB-INF/khach/home.jsp</result>

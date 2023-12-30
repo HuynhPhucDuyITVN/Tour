@@ -119,6 +119,7 @@ public class KhachAction extends ActionSupport implements SessionAware {
 
 	public String home() {
 		System.out.println("welcome Khach action");
+		vetourlist = new VeTourDAO().getList();
 		loaitourlist = new LoaiTourDAO().getList();
 		return "success";
 	}
