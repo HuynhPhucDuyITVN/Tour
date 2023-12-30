@@ -35,7 +35,7 @@
 	<th>Giá</th>
 	<th>Thành tiền</th>
 	<th>Trạng thái</th>
-	<th></th>
+	<th>Chức năng</th>
 	</tr>
 
 	

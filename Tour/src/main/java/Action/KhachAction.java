@@ -9,6 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import DAO.DatVeDAO;
 import DAO.LoaiTourDAO;
+import DAO.MD5;
+import DAO.UserDAO;
 import DAO.VeTourDAO;
 import Model.DatVe;
 import Model.LoaiTour;
@@ -33,6 +35,12 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	private int soluong;
 	private int gia;
 	private int thanhtien;
+	
+	private NguoiDung nguoidung;
+	private String matkhau;
+	private String matkhaucu;
+	private String matkhaumoi;
+	private String xacnhan;
 	
 	
 	
@@ -131,21 +139,25 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	}
 	
 	public String menu() {
+		loaitourlist = new LoaiTourDAO().getList();
 		vetourlist = new VeTourDAO().getList();
 		return "success";
 	}
 	
 	public String menutheoloai() {
+		loaitourlist = new LoaiTourDAO().getList();
 		vetourlist = new VeTourDAO().getList(idloaitour);
 		return "success";
 	}
 	
 	public String Detail() {
+		loaitourlist = new LoaiTourDAO().getList();
 		vetour = new VeTourDAO().getVeTourByID(idvetour);
 		return "success";
 	}
 	
 	public String Order() {
+		loaitourlist = new LoaiTourDAO().getList();
 		vetour = new VeTourDAO().getVeTourByID(idvetour);
 		return "success";
 	}
@@ -190,6 +202,18 @@ public class KhachAction extends ActionSupport implements SessionAware {
 
 	public int getThanhtien() {
 		return thanhtien;
+	}
+
+
+
+	public String getMatkhau() {
+		return matkhau;
+	}
+
+
+
+	public void setMatkhau(String matkhau) {
+		this.matkhau = matkhau;
 	}
 
 
@@ -244,6 +268,54 @@ public class KhachAction extends ActionSupport implements SessionAware {
 
 
 
+	public NguoiDung getNguoidung() {
+		return nguoidung;
+	}
+
+
+
+	public void setNguoidung(NguoiDung nguoidung) {
+		this.nguoidung = nguoidung;
+	}
+
+
+
+	public String getMatkhaucu() {
+		return matkhaucu;
+	}
+
+
+
+	public void setMatkhaucu(String matkhaucu) {
+		this.matkhaucu = matkhaucu;
+	}
+
+
+
+	public String getMatkhaumoi() {
+		return matkhaumoi;
+	}
+
+
+
+	public void setMatkhaumoi(String matkhaumoi) {
+		this.matkhaumoi = matkhaumoi;
+	}
+
+
+
+	public String getXacnhan() {
+		return xacnhan;
+	}
+
+
+
+	public void setXacnhan(String xacnhan) {
+		this.xacnhan = xacnhan;
+	}
+
+
+
 	public int getTrangthai() {
 		return trangthai;
 	}
@@ -258,12 +330,14 @@ public class KhachAction extends ActionSupport implements SessionAware {
 
 	public String vedat()
 	{
+		loaitourlist = new LoaiTourDAO().getList();
 		NguoiDung nd= (NguoiDung) session.get("nguoidung");
 		datvelist=new DatVeDAO().getList(nd.getId());
 		return SUCCESS;
 	}
 	public String fixvedat()
 	{
+		loaitourlist = new LoaiTourDAO().getList();
 		NguoiDung nd= (NguoiDung) session.get("nguoidung");
 		datve =new DatVeDAO().getDatVeByID(id,nd.getId());
 		return SUCCESS;
@@ -272,6 +346,32 @@ public class KhachAction extends ActionSupport implements SessionAware {
 		new DatVeDAO().update(id, trangthai);
 		return "list";
 		
+	}
+	public String change() {
+		loaitourlist = new LoaiTourDAO().getList();
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung =new UserDAO().getNguoiDungByIDAdmin(nd.getId());
+		return SUCCESS;
+	}
+	public String pass() {
+		
+		if(matkhau.equals(MD5.getMd5(matkhaucu)) && matkhaumoi.equals(xacnhan))
+		{
+			new UserDAO().updatePass(id, MD5.getMd5(matkhaumoi));
+			addActionMessage("Cập thật thành công");
+			session.put("nguoidung", null);
+			return "login";
+		}
+		else if (matkhau.equals(MD5.getMd5(matkhaucu)) == false)
+		{
+			addActionMessage("Mật khẩu cũ không khớp");
+			return "home";
+		}
+		else
+		{
+			addActionMessage("Mật khẩu mới và xác nhận mật khẩu không khớp");
+			return "home";
+		}
 	}
 
 	

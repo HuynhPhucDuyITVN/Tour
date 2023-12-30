@@ -189,5 +189,15 @@
 			<result name="success">/WEB-INF/khach/fixvedat.jsp</result>
 			<result name="vedat" type="redirect">vedatKhachAction</result>
 		</action>
+		<action name="changeKhachAction" class="Action.KhachAction" method="change">
+			<interceptor-ref name="loginStack" />
+			<result name="login">/WEB-INF/login.jsp</result>
+			<result name="success">/WEB-INF/khach/change.jsp</result>
+		</action>
+		<action name="passKhachAction" class="Action.KhachAction" method="pass">
+			<interceptor-ref name="loginStack" />
+			<result name="login">/WEB-INF/login.jsp</result>
+			<result name="home" type="redirect">homeKhachAction</result>
+		</action>
     </package>
 </struts>
