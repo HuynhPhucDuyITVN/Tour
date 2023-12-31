@@ -70,6 +70,9 @@
 						<ul class="dropdown">
 							<li><a href="vedatKhachAction">Vé đã đặt</a></li>
 							<li><a href="changeKhachAction">Đổi mật khẩu</a></li>
+							<s:if test="nguoidung.loaiquyen=='admin'">
+								<li><a href="homeAdminAction">Trang quản lý</a></li>
+							</s:if>
 							<li><a href="logoutKhachAction">Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -107,7 +110,7 @@
 									<a href='DetailKhachAction?idvetour=<s:property value="id"/>'><s:property value="tentour"/></a>
 								</h3>
 								<div class="price ml-auto">
-									<span><s:property value="gia"/></span>
+									<span><s:property value="getText('{0,number,#,##0}',{gia})"/></span>
 								</div>
 							</div>
 						</div>

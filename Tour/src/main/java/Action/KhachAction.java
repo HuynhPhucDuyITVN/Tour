@@ -131,36 +131,6 @@ public class KhachAction extends ActionSupport implements SessionAware {
 
 
 
-	public String home() {
-		System.out.println("welcome Khach action");
-		vetourlist = new VeTourDAO().getList();
-		loaitourlist = new LoaiTourDAO().getList();
-		return "success";
-	}
-	
-	public String menu() {
-		loaitourlist = new LoaiTourDAO().getList();
-		vetourlist = new VeTourDAO().getList();
-		return "success";
-	}
-	
-	public String menutheoloai() {
-		loaitourlist = new LoaiTourDAO().getList();
-		vetourlist = new VeTourDAO().getList(idloaitour);
-		return "success";
-	}
-	
-	public String Detail() {
-		loaitourlist = new LoaiTourDAO().getList();
-		vetour = new VeTourDAO().getVeTourByID(idvetour);
-		return "success";
-	}
-	
-	public String Order() {
-		loaitourlist = new LoaiTourDAO().getList();
-		vetour = new VeTourDAO().getVeTourByID(idvetour);
-		return "success";
-	}
 	
 	
 	
@@ -221,18 +191,9 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	public void setThanhtien(int thanhtien) {
 		this.thanhtien = thanhtien;
 	}
-	public String logout()
-	{
-		session.put("nguoidung", null);
-		return "login";
-	}
 
 
-	public String submitOrder() { 
-		NguoiDung nd= (NguoiDung) session.get("nguoidung");
-		new VeTourDAO().Order(nd.getId(), idvetour,sdt, soluong, gia, thanhtien);
-		return SUCCESS;
-    }
+
 	
 	public List<DatVe> getDatvelist() {
 		return datvelist;
@@ -327,11 +288,18 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	}
 
 
+	public String submitOrder() {
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		new VeTourDAO().Order(nd.getId(), idvetour,sdt, soluong, gia, thanhtien);
+		return SUCCESS;
+    }
 
 	public String vedat()
 	{
 		loaitourlist = new LoaiTourDAO().getList();
 		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
 		datvelist=new DatVeDAO().getList(nd.getId());
 		return SUCCESS;
 	}
@@ -339,13 +307,13 @@ public class KhachAction extends ActionSupport implements SessionAware {
 	{
 		loaitourlist = new LoaiTourDAO().getList();
 		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
 		datve =new DatVeDAO().getDatVeByID(id,nd.getId());
 		return SUCCESS;
 	}
 	public String update() {
 		new DatVeDAO().update(id, trangthai);
-		return "list";
-		
+		return SUCCESS;
 	}
 	public String change() {
 		loaitourlist = new LoaiTourDAO().getList();
@@ -364,16 +332,72 @@ public class KhachAction extends ActionSupport implements SessionAware {
 		}
 		else if (matkhau.equals(MD5.getMd5(matkhaucu)) == false)
 		{
+			loaitourlist = new LoaiTourDAO().getList();
+			NguoiDung nd= (NguoiDung) session.get("nguoidung");
+			nguoidung =new UserDAO().getNguoiDungByIDAdmin(nd.getId());
 			addActionMessage("Mật khẩu cũ không khớp");
-			return "home";
+			matkhaucu="";
+			matkhaumoi="";
+			xacnhan="";
+			return "fail";
 		}
 		else
 		{
+			loaitourlist = new LoaiTourDAO().getList();
+			NguoiDung nd= (NguoiDung) session.get("nguoidung");
+			nguoidung =new UserDAO().getNguoiDungByIDAdmin(nd.getId());
 			addActionMessage("Mật khẩu mới và xác nhận mật khẩu không khớp");
-			return "home";
+			matkhaucu="";
+			matkhaumoi="";
+			xacnhan="";
+			return "fail";
 		}
 	}
 
-	
+	public String logout()
+	{
+		session.put("nguoidung", null);
+		return "login";
+	}
 
+	public String home() {
+		System.out.println("welcome Khach action");
+		vetourlist = new VeTourDAO().getList();
+		loaitourlist = new LoaiTourDAO().getList();
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		return "success";
+	}
+	
+	public String menu() {
+		loaitourlist = new LoaiTourDAO().getList();
+		vetourlist = new VeTourDAO().getList();
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		return "success";
+	}
+	
+	public String menutheoloai() {
+		loaitourlist = new LoaiTourDAO().getList();
+		vetourlist = new VeTourDAO().getList(idloaitour);
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		return "success";
+	}
+	
+	public String Detail() {
+		loaitourlist = new LoaiTourDAO().getList();
+		vetour = new VeTourDAO().getVeTourByID(idvetour);
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		return "success";
+	}
+	
+	public String Order() {
+		loaitourlist = new LoaiTourDAO().getList();
+		vetour = new VeTourDAO().getVeTourByID(idvetour);
+		NguoiDung nd= (NguoiDung) session.get("nguoidung");
+		nguoidung=nd;
+		return "success";
+	}
 }

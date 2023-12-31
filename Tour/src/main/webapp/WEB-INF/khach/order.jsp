@@ -70,6 +70,9 @@
 						<ul class="dropdown">
 							<li><a href="vedatKhachAction">Vé đã đặt</a></li>
 							<li><a href="changeKhachAction">Đổi mật khẩu</a></li>
+							<s:if test="nguoidung.loaiquyen=='admin'">
+								<li><a href="homeAdminAction">Trang quản lý</a></li>
+							</s:if>
 							<li><a href="logoutKhachAction">Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -91,32 +94,14 @@
 		            <div class="col-md-4">
 		                <div class="p-3 shadow">
 		                    <h3 class="text-info text-center">ĐẶT VÉ</h3>
-		                    <s:form action="submitOrderKhacAction" method="Post" validate ="true">
-		                    	<input type="hidden" name="idvetour" value='<s:property value="idvetour"/>'/>
-		                        <div class="my-3">
-		                            <label>Tour</label>
-		                            <input readonly name="tentour" id="tentour" class="form-control" value='<s:property value="vetour.tentour"/>'/>
-		                        </div>
-		                        <div class="my-3">
-		                            <label>Thời gian</label>
-		                            <input readonly type="text" id="thoigian" name="thoigian" class="form-control" value='<s:property value="vetour.thoigian"/>' />
-		                        </div>
-		                        <div class="my-3">
-		                            <label>Số điện thoại</label>
-		                            <input  type="tel" id="sdt" name="sdt" class="form-control"  />
-		                        </div>
-		                        <div class="my-3">
-		                            <label>Giá</label>
-		                            <input readonly type="text" id="gia" name="gia" class="form-control" value='<s:property value="vetour.gia"/>' />
-		                        </div>
-		                        <div class="my-3">
-		                            <label>Số lượng</label>
-		                            <input type="text" id="soluong" name="soluong" class="form-control" onchange="tinhthanhtien()"/>
-		                        </div>
-		                        <div class="my-3">
-		                            <label>Thành tiền</label>
-		                            <input readonly type="text" id="thanhtien" name="thanhtien" class="form-control" />
-		                        </div>
+		                    <s:form Style="align-items: center;" action="submitOrderKhacAction" method="Post" validate ="true">
+		                    	<s:textfield class="form-control" label="Tên tour" redonly="true" value='%{vetour.tentour}'/>
+								<s:textfield class="form-control" id="thoigian" name="thoigian" label="Thời gian" value='%{vetour.thoigian}' readonly="true" />
+								<s:textfield class="form-control" id="sdt" name="sdt" label="Số điện thoại" />
+								<s:textfield class="form-control" id="gia" name="gia" label="Giá" value='%{vetour.gia}' readonly="true" />
+								<s:textfield class="form-control" id="soluong" name="soluong" label="Số lượng" onchange="tinhthanhtien()"/>
+								<s:textfield class="form-control" id="thanhtien" name="thanhtien" label="Thành tiền" redonly="true"/>
+								<input type="hidden" name="idvetour" value='<s:property value="idvetour"/>'/>
 		                        <div class="d-grid">
 		                        	<s:submit value="Đặt" class="btn btn-info btn btn-block"/>
 		                        </div>

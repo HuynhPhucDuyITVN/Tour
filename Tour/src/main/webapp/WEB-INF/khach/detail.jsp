@@ -71,6 +71,9 @@
 						<ul class="dropdown">
 							<li><a href="vedatKhachAction">Vé đã đặt</a></li>
 							<li><a href="changeKhachAction">Đổi mật khẩu</a></li>
+							<s:if test="nguoidung.loaiquyen=='admin'">
+								<li><a href="homeAdminAction">Trang quản lý</a></li>
+							</s:if>
 							<li><a href="logoutKhachAction">Đăng xuất</a></li>
 						</ul>
 					</li>
@@ -111,7 +114,7 @@
                         </h4>
                         <p><s:property value="mota"/></p>
                         <h2>
-                            <s:property value="gia"/>
+                            <s:property value="getText('{0,number,#,##0}',{gia})"/>
                         </h2>
                         <a class="btn btn-info text-light font-weight-bold" href='OrderKhachAction?idvetour=<s:property value="id"/>'>
                             Đặt vé

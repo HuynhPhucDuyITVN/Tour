@@ -1,6 +1,11 @@
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
 		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 <validators>
+<field name="sdt">
+      <field-validator type="required">
+          <message>Bạn phải nhập số điện thoại</message>
+      </field-validator>
+  </field>
   <field name="soluong">
       <field-validator type="required">
           <message>Bạn phải nhập số lượng</message>
