@@ -124,7 +124,7 @@ public class NguoiDungAction extends ActionSupport implements SessionAware {
 			return "login";
 		} else {
 			addActionMessage("Tài khoản đã tồn tại vui lòng đổi tên đăng nhập");
-			return "list";
+			return "create";
 		}
 		
 	}
@@ -153,12 +153,14 @@ public class NguoiDungAction extends ActionSupport implements SessionAware {
 		else if (matkhau.equals(MD5.getMd5(matkhaucu)) == false)
 		{
 			addActionMessage("Mật khẩu cũ không khớp");
-			return "list";
+			nguoidung =new UserDAO().getNguoiDungByIDAdmin(id);
+			return "fail";
 		}
 		else
 		{
 			addActionMessage("Mật khẩu mới và xác nhận mật khẩu không khớp");
-			return "list";
+			nguoidung =new UserDAO().getNguoiDungByIDAdmin(id);
+			return "fail";
 		}
 	}
 	

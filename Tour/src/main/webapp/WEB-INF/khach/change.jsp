@@ -107,7 +107,7 @@
 		                        </div>
 		                        <div class="my-3">
 		                            <label>Mật khẩu mới</label>
-		                            <input  required="required" id="matkhaumoi" name="matkhaumoi" class="form-control"  />
+		                            <input type="password" required="required" id="matkhaumoi" name="matkhaumoi" class="form-control"  />
 		                        </div>
 		                        <div class="my-3">
 		                            <label>Xác nhận mật khẩu</label>

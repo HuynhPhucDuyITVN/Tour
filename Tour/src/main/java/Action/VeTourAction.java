@@ -192,7 +192,6 @@ public class VeTourAction extends ActionSupport implements SessionAware {
 		 }
 		
 		new VeTourDAO().store(tentour,mota,thoigian,hinhFileName,gia,idloaitour);
-		
 		return "list";
 	}
 }

@@ -40,13 +40,24 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String login() {
 		NguoiDung nd = new UserDAO().login(tendangnhap, matkhau);
 		if (nd != null) {
-			session.put("nguoidung", nd);
-			System.out.println("Login success");
-			if (nd.getLoaiquyen().equals("admin")) {
-				return "admin";
-			} else
-				return "khach";
-		} else {
+			if(nd.getTrangthai() == 1)
+			{
+				session.put("nguoidung", nd);
+				System.out.println("Login success");
+				if (nd.getLoaiquyen().equals("admin")) {
+					return "admin";
+				} else
+					return "khach";
+			}
+			else
+			{
+				addActionMessage("Tài khoản đã khóa vui lòng liên hệ với Quản trị viên để mở!");
+				System.out.println("Login fail");
+				return "login";
+				
+			} 
+		}
+		else {
 			addActionMessage("Bạn nhập sai tên đăng nhập hoặc mật khẩu!");
 			System.out.println("Login fail");
 			return "login";

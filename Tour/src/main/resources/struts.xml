@@ -77,15 +77,11 @@
 			<interceptor-ref name="roleBasedIntercetor">
 				<param name="allowedRoles">admin</param>
 			</interceptor-ref>
-			<interceptor-ref name="validation">
-				<param name="excludeMethods">list,edit,create</param>
-			</interceptor-ref>
 			<interceptor-ref name="workflow" />
 			<result name="error">/WEB-INF/error.jsp</result>
 			<result name="login">/WEB-INF/login.jsp</result>
             <result name="success">/WEB-INF/admin/loaitour/{1}.jsp</result>
             <result name="list" type="redirect">listLoaiTourAction</result>
-            <result name="input">/WEB-INF/admin/loaitour/{1}.jsp</result>
 		</action>
 		<!-- VeTour -->
 		<action name="*VeTourAction" class="Action.VeTourAction" method="{1}">
@@ -96,15 +92,11 @@
 			<interceptor-ref name="roleBasedIntercetor">
 				<param name="allowedRoles">admin</param>
 			</interceptor-ref>
-			<interceptor-ref name="validation">
-				<param name="excludeMethods">list,edit,create</param>
-			</interceptor-ref>
 			<interceptor-ref name="workflow" />
 			<result name="error">/WEB-INF/error.jsp</result>
 			<result name="login">/WEB-INF/login.jsp</result>             
             <result name="success">/WEB-INF/admin/vetour/{1}.jsp</result>
             <result name="list" type="redirect">listVeTourAction</result>
-            <result name="input">/WEB-INF/admin/vetour/{1}.jsp</result>
 		</action>
 		<!-- NguoiDung -->
 		<action name="*NguoiDungAction" class="Action.NguoiDungAction" method="{1}"> 
@@ -114,15 +106,13 @@
 			<interceptor-ref name="roleBasedIntercetor">
 				<param name="allowedRoles">admin</param>
 			</interceptor-ref>
-			<interceptor-ref name="validation">
-				<param name="excludeMethods">list,edit,create</param>
-			</interceptor-ref>
 			<interceptor-ref name="workflow" />
 			<result name="error">/WEB-INF/error.jsp</result>
 			<result name="login">/WEB-INF/login.jsp</result>            
             <result name="success">/WEB-INF/admin/nguoidung/{1}.jsp</result>
             <result name="list" type="redirect">listNguoiDungAction</result>
-            <result name="input">/WEB-INF/admin/nguoidung/{1}.jsp</result>
+            <result name="create">/WEB-INF/admin/nguoidung/create.jsp</result>
+            <result name="fail">/WEB-INF/admin/nguoidung/change.jsp</result>
 		</action>
 		<!-- DatVe -->
 		<action name="*DatVeAction" class="Action.DatVeAction" method="{1}"> 
@@ -132,15 +122,11 @@
 			<interceptor-ref name="roleBasedIntercetor">
 				<param name="allowedRoles">admin</param>
 			</interceptor-ref>
-			<interceptor-ref name="validation">
-				<param name="excludeMethods">list,edit,create</param>
-			</interceptor-ref>
 			<interceptor-ref name="workflow" />
 			<result name="error">/WEB-INF/error.jsp</result>
 			<result name="login">/WEB-INF/login.jsp</result>            
             <result name="success">/WEB-INF/admin/datve/{1}.jsp</result>
             <result name="list" type="redirect">listDatVeAction</result>
-            <result name="input">/WEB-INF/admin/datve/{1}.jsp</result>
 		</action>
 		<!-- homeKhachAction -->
 		<action name="homeKhachAction" class="Action.KhachAction" method="home">
