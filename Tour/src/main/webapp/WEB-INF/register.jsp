@@ -37,7 +37,7 @@
                     </form>
                     
                     <div class="my-3">
-                        <p class="text-center">Đã có tài khoản <a href="home" >Đăng nhập</a></p>
+                        <p class="text-center">Đã có tài khoản <a href="login" >Đăng nhập</a></p>
                     </div>
                 </div>
             </div>
