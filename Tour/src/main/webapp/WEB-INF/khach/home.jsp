@@ -241,7 +241,7 @@
 				<div class="col-lg-7"><h2 class="section-title text-center">Tour</h2></div>
 			</div>
 			<div class="owl-carousel owl-3-slider">
-				<s:iterator var="vetour" value="vetourlist">
+				<s:iterator var="vetour" value="vetourlist"> 
 					<div class="item">
 						 <div class="media-1">
 							<a style="width: 350px; height: 350px" href='DetailKhachAction?idvetour=<s:property value="id"/>' class="media-thumb">
